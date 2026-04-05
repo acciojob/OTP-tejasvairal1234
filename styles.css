@@ -31,11 +31,9 @@ body
 	color: #000000;
 }
 
-.container
-{
-	display: flex;
-	justify-content: space-around;
-	width: 100%;
+.code-container {
+  display: flex;
+  gap: 10px;
 }
 
 .code
@@ -47,6 +45,7 @@ body
 	color: #757575;
 	font-size: 70px;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
