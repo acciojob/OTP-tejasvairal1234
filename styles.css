@@ -9,6 +9,7 @@ body {
   align-items: center;
   height: 100vh;
   flex-wrap: wrap;
+  font-family: Arial, sans-serif;
 }
 
 .verify {
@@ -21,6 +22,8 @@ body {
   border-radius: 5px;
   padding: 20px;
   gap: 20px;
+  width: 350px;
+  text-align: center;
 }
 
 #verification_heading {
@@ -32,24 +35,12 @@ body {
   display: flex;
   justify-content: space-around;
   width: 100%;
+  gap: 10px;
 }
 
 .code {
-  height: 70px;
-  width: 70px;
-  /* border: 1px solid black; */
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
-  color: #757575;
-  font-size: 70px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.text {
-  width: 50%;
+  width: 50px;
+  height: 50px;
   text-align: center;
-  background-color: #eaeaea;
-  padding: 5px 10px;
-  border-radius: 5px;
+  font-size: 24px;
 }
