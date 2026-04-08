@@ -1,36 +1,54 @@
-// your JS code here. If required.
 const codes = document.querySelectorAll('.code');
 
-// focus first input initially
+// Focus first input on load
 if (codes.length > 0) {
   codes[0].focus();
 }
 
-codes.forEach((code, idx) => {
+codes.forEach((code, index) => {
   code.addEventListener('keydown', (e) => {
     const key = e.key;
 
-    // Allow only digits 0–9
+    // Allow only digits (0–9)
     if (key >= '0' && key <= '9') {
-      code.value = '';
-      // move to next after filling
+      code.value = ''; // clear before inserting new digit
+
       setTimeout(() => {
-        if (idx < codes.length - 1) {
-          codes[idx + 1].focus();
+        // Move to next input
+        if (index < codes.length - 1) {
+          codes[index + 1].focus();
         }
       }, 10);
     }
-    // Handle backspace
+
+    // Handle Backspace
     else if (key === 'Backspace') {
       setTimeout(() => {
-        if (code.value === '' && idx > 0) {
-          codes[idx - 1].focus();
-          codes[idx - 1].value = '';
+        if (code.value === '' && index > 0) {
+          // Move focus to previous input and clear it
+          codes[index - 1].focus();
+          codes[index - 1].value = '';
         }
       }, 10);
-    } else if (key !== 'Tab') {
-      // prevent non-numeric characters except Tab for accessibility
+    }
+
+    // Allow Tab key, block everything else
+    else if (key !== 'Tab') {
       e.preventDefault();
     }
+  });
+
+  // Optional: handle paste (bonus improvement)
+  code.addEventListener('paste', (e) => {
+    const data = e.clipboardData.getData('text').split('');
+
+    if (data.length === codes.length) {
+      codes.forEach((input, i) => {
+        input.value = data[i];
+      });
+      codes[codes.length - 1].focus();
+    }
+
+    e.preventDefault();
   });
 });
